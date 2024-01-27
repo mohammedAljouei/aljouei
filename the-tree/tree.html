@@ -1,0 +1,535 @@
+
+
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta charset="utf-8">
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@livefamilytree1" />
+<meta name="twitter:creator" content="@livefamilytree1" />
+<meta property="og:url" content="https://LiveFamilyTreeS.com/trees/?t=240126OiUH" />
+
+<meta property="og:title" content="شجرة عائلة الجوعي" />
+
+<meta property="og:description" content="
+يستوجب استخدام متصفح كروم لعرض الشجرة
+" />
+<meta property="og:image" content="https://livefamilytrees.com/trees/livefamilytrees.png" />
+<head>
+<link rel="stylesheet" href="tree.css">
+<link rel="stylesheet" href="../dist/css/style.css">
+
+<title>شجرة عائلة محمد الجوعي</title>
+
+
+<style>
+
+  @font-face {
+    font-family: 'boldfont';
+    src: url('Harir_complete_OTF_Harir_Bold.otf') format('opentype');
+       
+  }
+  
+  
+  @font-face {
+    font-family: 'font';
+    src: url('Harir_complete_OTF_Harir.otf') format('opentype');
+       
+  }
+  
+  body {
+    font-family: 'font', fallback-fonts, sans-serif;
+  }
+  
+  
+  </style>
+
+
+<p>
+<br><br>
+
+
+
+
+
+
+<a class="button button-primary" href="../" style="font-family: font; margin-left: 55%; font-size: large;" > رجـــوع</a>
+
+
+  <svg width=1375 height=1375>
+
+
+
+
+
+  
+  
+   
+   
+</svg>
+
+
+<script src="tree.js?random=1706301445"></script>
+<script>
+
+
+const colorcode=["green", "green","green","green","red", "saddlebrown", "blue", "indigo", "red", "saddlebrown", "blue", "indigo", "red", "saddlebrown", "blue", "indigo", "red", "saddlebrown", "blue", "indigo", "red", "saddlebrown", "blue", "indigo", "red", "saddlebrown", "blue", "indigo", "violete"];
+
+var svg = d3.select("svg"),
+    width = +svg.attr("width"),
+    height = +svg.attr("height"),
+    g = svg.append("g")
+    .attr("transform", "translate(" + (width/2) + "," + (3*height/5) + ")");
+    
+    
+
+var stratify = d3.stratify()
+    .parentId(function(d) { return d.id.substring(0, d.id.lastIndexOf(".")); });
+
+var tree = d3.tree()
+    .size([0.5*2 * Math.PI, 500])
+    .separation(function(a, b) { return (a.parent == b.parent ? 1 : 1.2) / a.depth; });
+    
+
+ d3.csv("data.csv"+'?' + Math.floor(Math.random() * 1000), function(error, data) {
+          if (error) throw error;
+          
+          data.forEach(function(d) {
+            d.value = +d.value;
+            });
+        
+          var root = tree(stratify(data));
+          var link = g.selectAll(".link")
+              .data(root.links())
+              .enter().append("path")
+              .attr("fill","none")
+              .attr("stroke", "#555")
+	          .attr("stroke-opacity","0.6")
+              .attr("stroke-width", d => 3.6*(d.target.data.value))
+              .attr("d", d3.linkRadial()
+
+              .angle(function(d) { return d.x-0.5*Math.PI; })
+              .radius(function(d) { return d.y; }));
+        
+          var node = g.selectAll(".node")
+          
+              .data(root.descendants())
+              .enter().append("g")
+              .attr("class", function(d) { return "node" + (d.children ? " node--internal" : " node--internal"); })
+              .attr("transform", function(d) {return "translate(" + radialPoint(d.x-0.5*Math.PI, d.y) + ")"; });
+        
+          node.append("circle")
+              .attr("r", function(d) {return d.id.substring(d.id.lastIndexOf(".") + 1).indexOf("ـ") !=-1?3*2*d.data.value:d.id.substring(d.id.lastIndexOf(".") + 1) =='-'?0:3*d.data.value;})
+              .style("stroke","white")
+              .style("fill", function(d) {return colorcode[d.data.value]});
+              
+        
+         node.append("circle")
+              .attr("r", function(d) {return d.id.substring(d.id.lastIndexOf(".") + 1).split("&")[1]!= null?3*d.data.value+3:"0";})
+              .style("stroke","black")
+              .style("stroke-width", 4) 
+              .style("fill", "none");
+              
+
+
+            node.append("svg:title")
+          .text(function(d) 
+		      { return d.id.substring(d.id.lastIndexOf(".") + 1).indexOf("=") !=-1? d.id.substring(d.id.lastIndexOf(".") + 1).replaceAll('@', '\n').split("=")[0]+" \n "+d.id.substring(d.id.lastIndexOf(".") + 1).replaceAll('@', '\n').split("&")[0].split("=")[1]:""
+			  }
+		       );
+              
+
+
+          node.append("image")
+              .attr("xlink:href",function(d) { return 5>4&&d.data.value<4&&!d.children&&d.id.substring(d.id.lastIndexOf(".") + 1).indexOf("&") ==-1 ? "":"";}) // it was leaf.png here, if yes
+              .attr("x", "-10px")
+              .attr("y", function(d) {return -(0)-140-(4*5)-5*d.data.width+"px";})
+              .attr("width", "20px")
+              .attr("transform", function(d) {return "rotate(" + (d.x-0.5*Math.PI ) * 180 / Math.PI + ")"; })
+              .attr("height", "40px");
+              
+
+        node.append("a")
+            .attr("xlink:href", function(d) {return d.id.substring(d.id.lastIndexOf(".") + 1).indexOf("+") !=-1?"https://tinyurl.com/"+d.id.substring(d.id.lastIndexOf(".") + 1).split("+")[1].split("&")[0]:""})
+            .append("text")
+              .attr("dy","0.2em")
+              .attr("x", function(d) { return d.x > 0.5*Math.PI === !d.children ? 0.5+(5)-16 : -0.5-(5)+16; })
+              .attr("text-anchor", function(d) { return d.x > 0.5*Math.PI === !d.children ? "end" : "start"; })
+              .attr("transform", function(d) {return d.data.value>4? "rotate(0)":"rotate(" + (d.x > 0.5*Math.PI ? d.x-Math.PI/2 - 0.5*Math.PI : d.x-0.5*Math.PI + Math.PI / 2) * 180 / Math.PI + ")"; })
+              .style("font-size", 
+             
+             function(d) {return 18+( 1.1*d.data.value)+(10)+"px"})
+              .text(function(d) {return d.id.substring(d.id.lastIndexOf(".") + 1).indexOf("+") !=-1 ? "🔗":"";});
+        
+
+
+        node.append("text")
+                
+              .attr("dy","0.2em")
+              .attr("x", function(d) { return d.x > 0.5*Math.PI === !d.children ? 0.5+(5)-10 : -0.5-(5)+10; })
+              .attr("text-anchor", function(d) { return d.x > 0.5*Math.PI === !d.children ? "end" : "start"; })
+              .attr("transform", function(d) {return d.data.value>4? "rotate(0)":"rotate(" + (d.x > 0.5*Math.PI ? d.x-Math.PI/2 - 0.5*Math.PI : d.x-0.5*Math.PI + Math.PI / 2) * 180 / Math.PI + ")"; })
+                .style("font-size", 
+             
+             function(d) {return 18+( 1.1*d.data.value)+(10)+"px"})
+              .text(function(d) {return d.id.substring(d.id.lastIndexOf(".") + 1).indexOf("$") !=-1 ? "🧬":"";});
+        
+
+        node.append("text")
+               .attr("dy","0.2em")
+              .attr("x", function(d) { return d.x > 0.5*Math.PI === !d.children ? 0.5+(5)-16 : -0.5-(5)+16; })
+              .attr("text-anchor", function(d) { return d.x > 0.5*Math.PI === !d.children ? "end" : "start"; })
+              .attr("transform", function(d) {return d.data.value>4? "rotate(0)":"rotate(" + (d.x > 0.5*Math.PI ? d.x-Math.PI/2 - 0.5*Math.PI : d.x-0.5*Math.PI + Math.PI / 2) * 180 / Math.PI + ")"; })
+                .style("font-size", 
+             
+             function(d) {return 18+( 1.1*d.data.value)+(10)+"px"})
+              .text(function(d) {return d.id.substring(d.id.lastIndexOf(".") + 1).indexOf("=") !=-1 ? "💬":"";});
+        
+
+
+        node.append("text")
+              .attr("dy","0.2em")
+              .attr("x", function(d) { return d.x > 0.5*Math.PI === !d.children ? 0.5+(5)+16 : -0.5-(5)-16; })
+              .attr("text-anchor", function(d) { return d.x > 0.5*Math.PI === !d.children ? "start" : "end"; })
+              .attr("transform", function(d) {return d.data.value>4? "rotate(0)":"rotate(" + (d.x > 0.5*Math.PI ? d.x-Math.PI/2 - 0.5*Math.PI : d.x-0.5*Math.PI + Math.PI / 2) * 180 / Math.PI + ")"; })
+              
+              .style("font-size", 
+              function(d) {return d.id.substring(d.id.lastIndexOf(".") + 1).indexOf("ـ") !=-1?
+              30+(2*d.data.value)+10+"px":d.id.substring(d.id.lastIndexOf(".") + 1)=='-'?
+              "0px":18+( 1.1*d.data.value)+10+"px"})
+              
+              .style("fill","white" )
+             
+              .text();
+
+
+ 
+
+        node.append("text")
+              .attr("dy","0.2em")
+              .attr("x", function(d) { return d.x > 0.5*Math.PI === !d.children ? 0.5+(5)+12 : -0.5-(5)-12; })
+              .attr("text-anchor", function(d) { return d.x > 0.5*Math.PI === !d.children ? "start" : "end"; })
+              .attr("transform", function(d) {return d.data.value>4? "rotate(0)":"rotate(" + (d.x > 0.5*Math.PI ? d.x-Math.PI/2 - 0.5*Math.PI : d.x-0.5*Math.PI + Math.PI / 2) * 180 / Math.PI + ")"; })
+              
+              .style("font-size", 
+              function(d) {return d.id.substring(d.id.lastIndexOf(".") + 1).indexOf("ـ") !=-1?
+              30+(2*d.data.value)+10+"px":d.id.substring(d.id.lastIndexOf(".") + 1)=='-'?
+              "0px":18+( 1.1*d.data.value)+10+"px"})
+              
+              .style("fill","white" )
+             
+              .text();
+
+
+ 
+
+        node.append("text")
+              .attr("dy","0.25em")
+              .attr("x", function(d) { return d.x > 0.5*Math.PI === !d.children ? 0.5+(5)+14 : -0.5-(5)-14; })
+              .attr("text-anchor", function(d) { return d.x > 0.5*Math.PI === !d.children ? "start" : "end"; })
+              .attr("transform", function(d) {return d.data.value>4? "rotate(0)":"rotate(" + (d.x > 0.5*Math.PI ? d.x-Math.PI/2 - 0.5*Math.PI : d.x-0.5*Math.PI + Math.PI / 2) * 180 / Math.PI + ")"; })
+              
+              .style("font-size", 
+              function(d) {return d.id.substring(d.id.lastIndexOf(".") + 1).indexOf("ـ") !=-1?
+              30+(2*d.data.value)+10+"px":d.id.substring(d.id.lastIndexOf(".") + 1)=='-'?
+              "0px":18+( 1.1*d.data.value)+10+"px"})
+              
+              .style("fill","white" )
+             
+              .text();
+
+
+ 
+
+        node.append("text")
+              .attr("dy","0.15em")
+              .attr("x", function(d) { return d.x > 0.5*Math.PI === !d.children ? 0.5+(5)+14 : -0.5-5-14; })
+              .attr("text-anchor", function(d) { return d.x > 0.5*Math.PI === !d.children ? "start" : "end"; })
+              .attr("transform", function(d) {return d.data.value>4? "rotate(0)":"rotate(" + (d.x > 0.5*Math.PI ? d.x-Math.PI/2 - 0.5*Math.PI : d.x-0.5*Math.PI + Math.PI / 2) * 180 / Math.PI + ")"; })
+              
+              .style("font-size", 
+              function(d) {return d.id.substring(d.id.lastIndexOf(".") + 1).indexOf("ـ") !=-1?
+              30+(2*d.data.value)+10+"px":d.id.substring(d.id.lastIndexOf(".") + 1)=='-'?
+              "0px":18+( 1.1*d.data.value)+10+"px"})
+              
+              .style("fill","white" )
+             
+              .text();
+
+
+
+
+          
+        node.append("text")
+                .on("click", function(d) {
+                if (d.id.substring(d.id.lastIndexOf(".") + 1).split("=")[1]!= null){
+                 alert(d.id.substring(d.id.lastIndexOf(".") + 1).split("=")[0]+"\n"+d.id.substring(d.id.lastIndexOf(".") + 1).split("&")[0].split("=")[1].replaceAll('@', '\n'))
+                }
+                })
+              .attr("dy","0.2em")
+              .attr("x", function(d) { return d.x > 0.5*Math.PI === !d.children ? 0.5+5+14 : -0.5-5-14; })
+              .attr("text-anchor", function(d) { return d.x > 0.5*Math.PI === !d.children ? "start" : "end"; })
+              .attr("transform", function(d) {return d.data.value>4? "rotate(0)":"rotate(" + (d.x > 0.5*Math.PI ? d.x-Math.PI/2 - 0.5*Math.PI : d.x-0.5*Math.PI + Math.PI / 2) * 180 / Math.PI + ")"; })
+              
+              .style("font-size", 
+              function(d) {return d.id.substring(d.id.lastIndexOf(".") + 1).indexOf("ـ") !=-1?
+              30+(2*d.data.value)+10+"px":d.id.substring(d.id.lastIndexOf(".") + 1)=='-'?
+              "0px":18+( 1.1*d.data.value)+10+"px"})
+
+              .style("fill", 
+              function(d) {return d.id.substring(d.id.lastIndexOf(".") + 1).indexOf("ـ") !=-1?
+              colorcode[d.data.value+1]:colorcode[d.data.value]})
+             
+              .text(function(d) 
+              { return d.data.value>(5-1)?  d.id.substring(d.id.lastIndexOf(".") + 1).split("=")[0].split("!")[0].split("+")[0].split("$")[0].split("&")[0].split("#")[0]:d.id.substring(d.id.lastIndexOf(".") + 1).split("=")[0].split("!")[0].split("+")[0].split("$")[0].split("&")[0].split("#")[0]; });
+
+
+
+             node.append("text")
+              .attr("dy","1.6em")
+              .attr("x", function(d) { return d.x > 0.5*Math.PI === !d.children ? 0.5+5+10 : -0.5-5-10; })
+              .attr("text-anchor", function(d) { return d.x > 0.5*Math.PI === !d.children ? "start" : "end"; })
+              .attr("transform", function(d) {return d.data.value>4? "rotate(0)":"rotate(" + (d.x > 0.5*Math.PI ? d.x-Math.PI/2 - 0.5*Math.PI : d.x-0.5*Math.PI + Math.PI / 2) * 180 / Math.PI + ")"; })
+              .style("opacity","1")
+              .style("font-size", 
+             
+             function(d) {return d.id.substring(d.id.lastIndexOf(".") + 1).indexOf("ـ") !=-1?
+              18+(2*d.data.value)+10+"px":8+( 1.1*d.data.value)+10+"px"})
+              .style("fill", 
+              function(d) {return d.id.substring(d.id.lastIndexOf(".") + 1).indexOf("ـ") !=-1?
+              colorcode[d.data.value+1]:colorcode[d.data.value]})
+             
+            
+             
+              .text(function(d) { return d.id.substring(d.id.lastIndexOf(".") + 1).split("&")[0].split("#")[1]; });
+
+                         
+             
+   });
+
+
+
+
+        
+          
+          svg.append("image")
+              .attr("xlink:href","trunk1.png")
+              .attr("x", 683.42592592593)
+              .attr("y", 825+10)
+              .attr("height", "67.222222222222px");
+
+
+
+
+    svg.append("text")
+       .attr("style","white-space:pre")
+       .attr("x", 672.22222222222)
+       .attr("y", 878.83333333333)
+       .attr("fill", "black")
+       .attr("text-anchor","end")
+       
+       .style("font-size", "باسم".indexOf("ــ") !=-1?
+              "57.5px":"37.5px")
+       .text ("باسم ");
+       
+///second line on trunck
+
+    svg.append("text")
+       .attr("style","white-space:pre")
+       .attr("x", 662.84722222222)
+       .attr("y", 903.83333333333)
+       .attr("fill", "black")
+       .attr("text-anchor","end")
+       
+       .style("font-size", "باسم".indexOf("ــ") !=-1?
+              "57.5px":"18.75px")
+       .text (" ");
+     
+    svg.append("circle")
+       .attr("cx", 687.5)
+       .attr("cy", 870.83333333333)
+       .attr("r", 17)
+       .style("stroke","white")
+       .style("fill","باسم".indexOf("ـ") !=-1?"black":"black")
+       .attr("stroke-width",2)
+       
+    svg.append("circle")
+        .attr("cx", 687.5)
+       .attr("cy", 870.83333333333)
+        .attr("r", 0)  
+        .style("stroke","black")
+        .style("stroke-width", 4) 
+        .style("fill", "none");
+       
+    svg.append("a")
+        .attr("xlink:href","https://tinyurl.com/ ")
+        .append("text")
+       .attr("x", 687.5)
+       .attr("y", 880.83333333333)
+        .attr("text-anchor", "middle")
+        .style("font-size","37.5px")
+        .text("");
+        
+       
+
+
+
+        
+          
+          svg.append("image")
+              .attr("xlink:href","trunk.png")
+              .attr("x", 683.42592592593)
+              .attr("y", 886.11111111111)
+              .attr("height", "67.222222222222px");
+
+
+
+
+    svg.append("text")
+       .attr("style","white-space:pre")
+       .attr("x", 672.22222222222)
+       .attr("y", 939.94444444444)
+       .attr("fill", "black")
+       .attr("text-anchor","end")
+       
+       .style("font-size", "قاسم#شاعر معروف".indexOf("ــ") !=-1?
+              "57.5px":"37.5px")
+       .text ("قاسم ");
+       
+///second line on trunck
+
+    svg.append("text")
+       .attr("style","white-space:pre")
+       .attr("x", 662.84722222222)
+       .attr("y", 964.94444444444)
+       .attr("fill", "black")
+       .attr("text-anchor","end")
+       
+       .style("font-size", "قاسم#شاعر معروف".indexOf("ــ") !=-1?
+              "57.5px":"18.75px")
+       .text ("شاعر معروف ");
+     
+    svg.append("circle")
+       .attr("cx", 687.5)
+       .attr("cy", 931.94444444444)
+       .attr("r", 17)
+       .style("stroke","white")
+       .style("fill","قاسم#شاعر معروف".indexOf("ـ") !=-1?"black":"black")
+       .attr("stroke-width",2)
+       
+    svg.append("circle")
+        .attr("cx", 687.5)
+       .attr("cy", 931.94444444444)
+        .attr("r", 0)  
+        .style("stroke","black")
+        .style("stroke-width", 4) 
+        .style("fill", "none");
+       
+    svg.append("a")
+        .attr("xlink:href","https://tinyurl.com/ ")
+        .append("text")
+       .attr("x", 687.5)
+       .attr("y", 941.94444444444)
+        .attr("text-anchor", "middle")
+        .style("font-size","37.5px")
+        .text("");
+        
+       
+
+
+
+        
+          
+          svg.append("image")
+              .attr("xlink:href","trunk.png")
+              .attr("x", 683.42592592593)
+              .attr("y", 947.22222222222)
+              .attr("height", "67.222222222222px");
+
+
+
+
+    svg.append("text")
+       .attr("style","white-space:pre")
+       .attr("x", 672.22222222222)
+       .attr("y", 1001.0555555556)
+       .attr("fill", "black")
+       .attr("text-anchor","end")
+       
+       .style("font-size", "جاسم".indexOf("ــ") !=-1?
+              "57.5px":"37.5px")
+       .text ("جاسم ");
+       
+///second line on trunck
+
+    svg.append("text")
+       .attr("style","white-space:pre")
+       .attr("x", 662.84722222222)
+       .attr("y", 1026.0555555556)
+       .attr("fill", "black")
+       .attr("text-anchor","end")
+       
+       .style("font-size", "جاسم".indexOf("ــ") !=-1?
+              "57.5px":"18.75px")
+       .text (" ");
+     
+    svg.append("circle")
+       .attr("cx", 687.5)
+       .attr("cy", 993.05555555556)
+       .attr("r", 17)
+       .style("stroke","white")
+       .style("fill","جاسم".indexOf("ـ") !=-1?"black":"black")
+       .attr("stroke-width",2)
+       
+    svg.append("circle")
+        .attr("cx", 687.5)
+       .attr("cy", 993.05555555556)
+        .attr("r", 0)  
+        .style("stroke","black")
+        .style("stroke-width", 4) 
+        .style("fill", "none");
+       
+    svg.append("a")
+        .attr("xlink:href","https://tinyurl.com/ ")
+        .append("text")
+       .attr("x", 687.5)
+       .attr("y", 1003.0555555556)
+        .attr("text-anchor", "middle")
+        .style("font-size","37.5px")
+        .text("");
+        
+       
+  
+  
+            svg.append("image")
+              .attr("xlink:href","trunkroot.png")
+              .attr("x", 602)
+              .attr("y", 1008)
+              .attr("height", 79.444444444444);
+
+  
+  
+  
+ svg.append("text")
+    .attr("style","white-space:pre")
+       .attr("x", 688)
+       .attr("y", 138)
+       .attr("fill", "black")
+       .attr("text-anchor","middle")
+       .style("font-size","40.869565217391px")
+       .text ("شجرة عائلة محمد الجوعي ")
+
+       
+
+
+
+
+
+
+
+function radialPoint(x, y) {
+  return [(y = +y) * Math.cos(x -= Math.PI / 2), y * Math.sin(x)];
+}
+
+
+</script>
+</p>

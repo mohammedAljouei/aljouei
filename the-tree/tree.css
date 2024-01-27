@@ -1,0 +1,75 @@
+
+
+@import url('https://fonts.googleapis.com/css?family=Cairo');
+
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300&display=swap');
+
+
+body p {
+    font-family: 'Tajawal', sans-serif;
+  
+  font-size: 16px;
+  font-weight: bold;
+  background-image: url("draftbkg.jpg");
+}
+.node circle {
+  fill: #999;
+}
+
+.node text {
+    font-family: 'Tajawal', sans-serif;
+  
+  font-weight: bold;
+}
+
+text2 {
+    font-family: 'Tajawal', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.node--internal circle {
+  fill: #555;
+}
+
+.node--internal text {
+  text-shadow: 0 2px 0 #fff, 0 -2px 0 #fff, 2px 0 0 #fff, -2px 0 0 #fff;
+}
+
+
+.link1 {
+  fill: none;
+  stroke: #555;  
+  stroke-opacity: 0.4;  
+  
+ }
+
+.link2 {
+  fill: none;
+  stroke: #555;  
+  stroke-opacity: 0.4;  
+  stroke-width:2.5px;
+ }
+ 
+ 
+.link3 {
+  fill: none;
+  stroke: #555;  
+  stroke-opacity: 0.4;  
+  stroke-width:3.5px;
+ }
+ 
+.link4 {
+  fill: none;
+  stroke: #555;  
+  stroke-opacity: 0.4;  
+  stroke-width:4.5px;
+ }
+ 
+.link5 {
+  fill: none;
+  stroke: #555;  
+  stroke-opacity: 0.4;  
+  stroke-width:5.5px;
+ }
+

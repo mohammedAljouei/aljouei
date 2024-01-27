@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Tree</title>
+  <style>
+
+.branch {
+    background-color: #8fbc8b; /* Darker color for branches */
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    
+}
+
+
+
+.leaf {
+    background-color: #90ee90; /* Lighter color for leaves */
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+/* ... rest of your CSS */
+
+   body {
+    background-color: #f0f0f0;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tree-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 60%;
+}
+
+.node {
+    background-color: #8fbc8b; /* root and branches */
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+}
+
+.leaf {
+    background-color: #90ee90; /* leaves */
+    padding: 5px;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.branches {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.branch {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hidden {
+    display: none;
+}
+
+  </style>
+</head>
+<body>
+  <div class="tree-container"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const treeData = {
+        "name": "Root",
+        "children": [
+          {
+            "name": "Branch 1",
+            "children": [
+            {
+            "name": "Branch 4",
+            "children": [
+              {"name": "Leaf 41"},
+              {"name": "Leaf 24"}
+            ]
+          },
+              {"name": "Leaf 2"}
+            ]
+          },
+          {
+            "name": "Branch 2",
+            "children": [
+              {"name": "Leaf 3"},
+              {"name": "Leaf 4"}
+            ]
+          },
+          {
+            "name": "Branch 2",
+            "children": [
+              {"name": "Leaf 3"},
+              {"name": "Leaf 4"}
+            ]
+          }
+        ]
+      };
+
+      function createTree(container, subtree) {
+        // Check if the node is a leaf (has no children)
+        let isLeaf = !subtree.children || subtree.children.length === 0;
+
+        let nodeElement = createNode(subtree.name, isLeaf ? 'leaf' : 'branch');
+        
+        if (!isLeaf) {
+            // If it's not a leaf, it's a branch and should have a click event
+            nodeElement.onclick = function(event) {
+                event.stopPropagation();
+                let childrenContainer = this.nextElementSibling;
+                if (childrenContainer) {
+                    childrenContainer.classList.toggle('hidden');
+                }
+            };
+        }
+
+        container.appendChild(nodeElement);
+
+        // Recursively create trees for children if they exist
+        if (subtree.children && subtree.children.length > 0) {
+            let childrenContainer = document.createElement('div');
+            childrenContainer.classList.add('hidden');
+            subtree.children.forEach(function(child) {
+                createTree(childrenContainer, child);
+            });
+            container.appendChild(childrenContainer);
+        }
+    }
+
+    function createNode(name, className) {
+        let nodeElement = document.createElement('div');
+        nodeElement.textContent = name;
+        nodeElement.classList.add(className);
+        return nodeElement;
+    }
+
+    let treeContainer = document.querySelector('.tree-container');
+    if (treeContainer) {
+        createTree(treeContainer, treeData); // Start with the root
+    } else {
+        console.error('Tree container not found');
+    }
+    });
+  </script>
+</body>
+</html>

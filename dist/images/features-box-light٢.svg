@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1080" height="1080" viewBox="0 0 1080 1080" xml:space="preserve">
+<desc>Created with Fabric.js 5.2.4</desc>
+<defs>
+</defs>
+<g transform="matrix(1 0 0 1 540 540)" id="9cc668e0-0ef5-423e-b88d-c7a9dcd219a3"  >
+<rect style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1; visibility: hidden;" vector-effect="non-scaling-stroke"  x="-540" y="-540" rx="0" ry="0" width="1080" height="1080" />
+</g>
+<g transform="matrix(1 0 0 1 540 540)" id="882f51d6-66ba-4d83-965d-f842a7f37420"  >
+</g>
+<g transform="matrix(1 0 0 1 540 540)"  >
+<g style="" vector-effect="non-scaling-stroke"   >
+		<g transform="matrix(1 0 0 1 0 0)"  >
+<path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,255,255); fill-rule: evenodd; opacity: 1;" vector-effect="non-scaling-stroke"  transform=" translate(-270, -185)" d="M 0 0 L 540 0 L 540 370 L 0 370 z" stroke-linecap="round" />
+</g>
+		<g transform="matrix(1 0 0 1 0 -88.3)"  >
+<linearGradient id="SVGID_a_3" gradientUnits="objectBoundingBox" gradientTransform="matrix(1 0 0 1 0 0)"  x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" style="stop-color:rgb(248,249,251);stop-opacity: 1"/>
+<stop offset="100%" style="stop-color:rgb(255,255,255);stop-opacity: 1"/>
+</linearGradient>
+<path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: url(#SVGID_a_3); fill-rule: evenodd; opacity: 1;" vector-effect="non-scaling-stroke"  transform=" translate(-270, -96.7)" d="M 0 34.571 L 540 34.571 L 540 158.839 L 0 158.839 z" stroke-linecap="round" />
+</g>
+</g>
+</g>
+<g transform="matrix(1 0 0 1 540 540)" style="" id="7028b2cb-8c2d-4e17-b069-6469bad3596f"  >
+		<text xml:space="preserve" font-family="Lato" font-size="40" font-style="normal" font-weight="400" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1; white-space: pre;" ><tspan x="-99.88" y="12.57" >بَارِزين الأسرة</tspan></text>
+</g>
+</svg>
