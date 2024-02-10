@@ -48,6 +48,24 @@ body {
             </div>
         </header>
 
+        <script>
+            function downloadImage() {
+    // Create an anchor element
+    var downloadLink = document.createElement('a');
+    // Set the href attribute to the image URL you want to download
+    downloadLink.href = 'tree.jpg'; // Replace 'path_to_your_image.jpg' with the actual path to your image file
+    // Set the download attribute to specify the filename to be downloaded
+    downloadLink.download = 'tree_image.jpg'; // Change 'tree_image.jpg' to the desired filename
+    // Append the anchor element to the document body
+    document.body.appendChild(downloadLink);
+    // Programmatically trigger a click event on the anchor element
+    downloadLink.click();
+    // Clean up by removing the anchor element from the document body
+    document.body.removeChild(downloadLink);
+}
+
+        </script>
+
         <main>
             <section class="hero">
                 <div class="container">
@@ -56,7 +74,7 @@ body {
 	                        <h1 class="hero-title mt-0" style="font-family: boldfont;">عائلة الجوعي</h1>
 	                        <p class="hero-paragraph">الجُوعي: على لفظ النسبة إلى الجوع من أهل خب روضان جاءوا إليه من الشقة وهم أبناء محمد بن علي بن إبراهيم بن سالم بن رأس الأسرة (الحميدي) جد الحمادي أهل الشقة. من آل أبورباع من قبيلة عنزة.</p>
 	                        <div class="hero-cta">
-								<!-- <a class="button button-primary" href="the-tree/tree.html" style="font-family: font;">الشجرة التفاعلية للعائلة</a> -->
+                                <a id="downloadLink" class="button button-primary" href="#" onclick="downloadImage()" style="font-family: font;">شجرة العائلة</a>
 								<div class="lights-toggle">
 									<input id="lights-toggle" type="checkbox" name="lights-toggle" class="switch" checked="checked">
 									<!-- <label for="lights-toggle" class="text-xs"><span>الوضع <span >الداكن</span></span></label> -->
@@ -93,30 +111,28 @@ body {
 									<img class="features-box asset-dark" src="dist/images/features-box-dark.svg" alt="Feature box">
 									<img class="features-illustration asset-dark" src="dist/images/features-illustration-top-dark.svg" alt="Feature illustration top">
 									<img class="features-illustration asset-light" src="dist/images/features-illustration-light.svg" alt="Feature illustration">
-									<img class="features-box asset-light" src="dist/images/features-box-light.svg" alt="Feature box">
+									<img class="features-box asset-light" src="dist/images/Mediamodifier-Design(1).svg" alt="Feature box"> 
 									<img class="features-illustration asset-light" src="dist/images/features-illustration-top-light.svg" alt="Feature illustration top">
 								</div>
 							</div>
                         </div>
                         <div class="features-wrap">
+
                             <div class="feature is-revealing">
                                 <div class="feature-inner">
                                    
 									<div class="feature-content">
-                                    	<h3 class="feature-title mt-0" style="font-family: boldfont;">الشيخ عبد الله بن صالح الجوعي</h3>
-                                    	<p class="text-sm mb-0">العالم الفاضل والزاهد المتعفف الشيخ عبد الله بن صالح الجوعي: ولد رحمه الله في إحدى ضواحي بريدة، وقد تعلم القراءة والكتابة وحفظ القرآن عن ظهر قلب، ثم التحق بالعلماء فلازم الشيخ عبد الله بن محمد بن سليم، والشيخ عمر بن محمد بن سليم، وكان من أخص تلامذته وأحظاهم عنده، كما أخذ عن الشيخ عبد العزيز بن إبراهيم العبادي.</p>
-									</div>
+
+
+                                    	<h3 class="feature-title mt-0" style="font-family: boldfont;">سبب التلقيب بـ (الجوعي)</h3>
+                                        <p class="section-paragraph">وذكر الأستاذ ناصر العمري سبب تلقيبهم بـ (الجوعي) فقال:
+
+                                            عادة قرى الضيف متأصلة في نفس العربي مرتبطة بكرمه وإيثاره وحاجة سكان البلاد العربية أعني الصحراء بالذات إلى الضيافة لكثرة تنقلات العرب في أرض الصحراء وحلهم وإرتحالهم، ولكن العربي قد يعجز عن الضيافة بأسباب وضعه الاقتصادي فيلام على التقصير في الضيافة، لعل له عذرًا وأنت تلوم.
+                                            
+                                            وكان في قرية الشقة السفلى رجل من عنزة يقال له محمد العلي الحُمّيْدي, وكان كثير الضيوف وعجز عن قراهم ولكنه لا يستطيع رد الضيف دون ضيافة فلجأ إلى تقديم اللبن يجمعه في وعاء كبير (قدر) وإذا جاء إليه ضيف قدم له اللبن، وقال ليس لدينا إلا اللبن، واللبن في الحقيقة طعام وشراب لكنه لا يقنع الضيف العربي من المضيف العربي فصار البدو يسمون محمد بن علي الحميدي (الجوعي) وتغير اسم أسرة الحميدي من الحميدي إلى الجوعى، وعُرفت الأسرة بهذا الاسم الجديد، وهم لا يأنفون من هذا الاسم فهو اسمهم الذي يتسمون به، وقد انتقلت الأسرة من الشقة إلى الخبوب ومحمد العلي الحميدي هو الجد الخامس للمعاصرين من هذه الأسرة أي في عام ١٤٠٤ هـ والله المستعان.</p>									</div>
 								</div>
                             </div>
-							<div class="feature is-revealing">
-                                <div class="feature-inner">
-                                   
-									<div class="feature-content">
-                                    	<h3 class="feature-title mt-0"  style="font-family: boldfont;"> إبراهيم بن صالح بن إبراهيم الجوعي</h3>
-                                    	<p class="text-sm mb-0">ولد الأستاذ إبراهيم الجوعي في مدينة بريدة عام ثمانين وثلاثمائة وألف من الهجرة النبوية، ودرس المرحلة الابتدائية في مدرسة أحمد بن حنبل في بريدة، وتخرج منها عام ١٣٩٣ هت، ثم نال شهادة الكفاءة المتوسطة من متوسطة صلاح الدين ببريدة عام ١٣٩٦ هـ، ودرس المرحلة الثانوية في ثانوية بريدة، وتخرج منها عام ١٣٩٩ هـ، ثم التحق بقسم اللغة العربية في كلية اللغة العربية والعلوم الاجتماعية بفرع جامعة الإمام محمد بن سعود الإسلامية بالقصيم، وتخرج منه عام ١٤٠٣ هـ.</p>
-									</div>
-								</div>
-                            </div>
+<!-- 							
 							<div class="feature is-revealing">
                                 <div class="feature-inner">
                         
@@ -125,13 +141,15 @@ body {
                                     	<p class="text-sm mb-0">شترك مع الدكتور سليمان بن محمد بن عبد الله العثيم في تأليف كتاب (عيون المراثي البازية) وهي القصائد التي قيلت في رثاء الشيخ عبد العزيز بن عبد الله بن باز مفتي المملكة العربية السعودية السابق، رحمه الله وسيأتي ذلك في ترجمة (العثيم) في حرف العين.</p>
 									</div>
 								</div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
+
+
                 </div>
             </section>
 
-			<section class="cta section">
+			<!-- <section class="cta section">
                 <div class="container-sm">
                     <div class="cta-inner section-inner">
                         <div class="cta-header text-center">
@@ -151,7 +169,7 @@ body {
 					    </div>
                     </div>
                 </div>
-            </section>
+            </section> -->
         </main>
 
         <footer class="site-footer has-top-divider">
