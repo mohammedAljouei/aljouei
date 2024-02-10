@@ -47,9 +47,9 @@ body {
                 </div>
             </div>
         </header>
-
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script>
-            function downloadImage() {
+function downloadImage() {
     // Create an anchor element
     var downloadLink = document.createElement('a');
     // Set the href attribute to the image URL you want to download
@@ -62,7 +62,21 @@ body {
     downloadLink.click();
     // Clean up by removing the anchor element from the document body
     document.body.removeChild(downloadLink);
+
+    // Display SweetAlert success message
+    Swal.fire({
+        icon: 'success',
+        title: 'تم تحميل الشجرة',
+        text: 'تم تحميل الشجرة بنجاح',
+        confirmButtonText: 'حسنا'
+    }).then((result) => {
+        // Redirect to the file location using window.location
+        if (result.isConfirmed) {
+            window.location.href = 'tree.jpg'; // Replace 'the-tree/tree.html' with the desired file location
+        }
+    });
 }
+
 
         </script>
 
